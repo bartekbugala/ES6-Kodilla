@@ -1,0 +1,18 @@
+{
+  "name": "kodilla-19.1",
+  "version": "1.0.0",
+  "description": "ES6 - EcmaScript6 - ES2015 - Harmony",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ES6"
+  ],
+  "author": "BB",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1"
+  }
+}
