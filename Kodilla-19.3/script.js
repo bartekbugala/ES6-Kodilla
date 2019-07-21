@@ -3,7 +3,7 @@
 let cat = 'Mruczek';
 const dog = 'Kruczek';
 
-let sound = (zwierze, odglos) => {
+const sound = (zwierze, odglos) => {
     console.log(zwierze + ' robi ' + odglos);
 }
 
