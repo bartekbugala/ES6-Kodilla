@@ -1,0 +1,41 @@
+{
+  "name": "kodilla-18.8",
+  "version": "1.0.0",
+  "description": "gif search react",
+  "main": "",
+  "scripts": {
+    "test": "npm-run-all test:*",
+    "test:all": "html-validator --allfiles --verbose",
+    "html:validator": "html-validator -h",
+    "init-project": "npm install && npm-run-all init:*",
+    "init:dirs": "mkdirp sass css vendor images js js/components",
+    "init:files": "touch README.md index.html js/script.js js/components/App.js js/components/Gif.js js/components/Search.js css/style.css sass/style.scss",
+    "build": "npm-run-all build:*",
+    "build:clean": "rimraf css",
+    "build:sass": "node-sass --output-style compact -o css sass",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch": "npm-run-all build test -p watch:*",
+    "watch:sassprefixer": "onchange -d 100 sass/*.scss sass/**/*.scss -- npm-run-all watch:sass watch:autoprefixer",
+    "watch:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch:autoprefixer": "autoprefixer-cli css/style.css ",
+    "watch:validate": "onchange *.html -- npm-run-all test:all",
+    "watch:browsersync": "browser-sync start --server --files js css *.html",
+    "start": "npm-run-all start:*",
+    "start:http": "http-server"
+  },
+  "author": "BB",
+  "license": "MIT",
+  "devDependencies": {
+    "allhtml-validator-cli": "git+https://github.com/bartekbugala/allhtml-validator-cli",
+    "autoprefixer-cli": "^1.0.0",
+    "browser-sync": "^2.26.5",
+    "globstar": "^1.0.0",
+    "http-server": "^0.11.1",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0",
+    "rimraf": "^2.6.3"
+  }
+}
