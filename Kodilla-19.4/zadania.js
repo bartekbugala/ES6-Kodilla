@@ -6,7 +6,7 @@ const thing = 'World';
 console.log (`${greet} ${thing}`);
 
 // Zad.2 Arrow function z domyślnym 1 w drugim argumencie
-const multiply = (number1, number2 = 1) => {return number1 * number2};
+const multiply = (number1, number2 = 1) => number1 * number2;
 console.log(multiply(2,3));
 console.log(multiply(5));
 
@@ -24,6 +24,5 @@ const grades = [1, 5, 5, 5, 4, 3, 3, 2, 1];
 console.log(average(...grades));
 
 // Zad. 5 Destrukturyzacja w celu wyciągnięcia imienia i nazwiska z dziwnej struktury danych
-const weirdDataStructure = [1, 4, 'Iwona', false, 'Nowak'];
-const [ , , firstName, , lastName] = weirdDataStructure;
+const [ , , firstName, , lastName] = [1, 4, 'Iwona', false, 'Nowak'];
 console.log(`${firstName} ${lastName}`);
