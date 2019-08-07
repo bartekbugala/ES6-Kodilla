@@ -1,5 +1,5 @@
-var GIPHY_API_URL = 'https://api.giphy.com';
-var GIPHY_PUB_KEY = 'c4umidLaJN9Qt0buDBAcKfwjpn755IJs';
+const GIPHY_API_URL = 'https://api.giphy.com';
+const GIPHY_PUB_KEY = 'c4umidLaJN9Qt0buDBAcKfwjpn755IJs';
 
 App = React.createClass({
   getInitialState: function() {
@@ -11,45 +11,42 @@ App = React.createClass({
   },
 
   handleSearch: function(searchingText) {
-    // 1.
-    this.setState({
-      loading: true // 2.
-    });
-    this.getGif(
-      searchingText,
-      function(gif) {
-        // 3.
+    this.setState({ loading: true });
+    this.getGif(searchingText)
+      .then(gif => {
         this.setState({
-          // 4
-          loading: false, // a
-          gif: gif, // b
-          searchingText: searchingText // c
+          loading: false,
+          gif: gif,
+          searchingText: searchingText
         });
-      }.bind(this)
-    );
+      })
+      .catch(error => console.error('Something went wrong', error));
   },
 
-  getGif: function(searchingText, callback) {
-    // 1.
-    var url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText; // 2.
-    var xhr = new XMLHttpRequest(); // 3.
-    xhr.open('GET', url);
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        var data = JSON.parse(xhr.responseText).data; // 4.
-        var gif = {
-          // 5.
-          url: data.fixed_width_downsampled_url,
-          sourceUrl: data.url
-        };
-        callback(gif); // 6.
-      }
-    };
-    xhr.send();
+  getGif: searchingText => {
+    const url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText;
+
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText).data;
+          const gif = {
+            url: data.fixed_width_downsampled_url,
+            sourceUrl: data.url
+          };
+          resolve(gif);
+        } else {
+          reject(new Error(this.statusText));
+        }
+      };
+      xhr.open('GET', url);
+      xhr.send();
+    });
   },
 
   render: function() {
-    var styles = {
+    const styles = {
       margin: '0 auto',
       textAlign: 'center',
       width: '90%'
