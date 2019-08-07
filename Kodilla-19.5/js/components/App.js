@@ -11,16 +11,16 @@ App = React.createClass({
   },
 
   handleSearch: function(searchingText) {
-    this.setState({ loading: true });
+    this.setState({loading: true});
     this.getGif(searchingText)
-      .then(gif => {
+    .then(gif => {
         this.setState({
           loading: false,
           gif: gif,
           searchingText: searchingText
         });
-      })
-      .catch(error => console.error('Something went wrong', error));
+      }
+    ).catch(error => console.error('Something went wrong', error));
   },
 
   getGif: searchingText => {
