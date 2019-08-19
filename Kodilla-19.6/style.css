@@ -1,5 +1,122 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+@font-face {
+  font-family: Segment7Standard;
+  src: url('Segment7Standard.otf');
 }
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+.stopwatch-container {
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  font-size: 30px;
+  line-height: 50px;
+  height: 65px;
+  background-color: rgba(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 6px;
+  perspective: 400px;
+  transform: translate3d(0, 0, 200px);
+  z-index: 9999;
+  box-shadow: 2px 2px 5px black;
+}
+.stopwatch {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  color: rgb(255, 45, 45);
+  opacity: 0.9;
+  text-align: center;
+  
+  font-family: Segment7Standard;
+  text-shadow: 0 0 5px rgb(255, 137, 137);
+  padding: 10px;
+  
+}
+.lcd-frame {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  color: greenyellow;
+  opacity: 0.2;
+  text-align: center;
+  font-family: Segment7Standard;
+  padding: 10px;
+}
+.controls {
+    margin-top: 10px;
+  text-align: center;
+}
+.button {
+    display: block;
+    float: left;
+    text-decoration: none;
+    background: black;
+    padding: 4px;
+    margin: 4px;
+    width: 30px;
+    height: 30px;
+    color: white;
+    box-shadow: 2px 2px 5px black;
+}
+.button:hover {
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+.button:active {
+    box-shadow: 1px 1px 2px black;
+}
+.rect-container {
+    width: 300px;
+    height: 200px;
+    perspective: 500px;
+}
+.rect {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateX(50%) translateY(10%) translateZ( -50px) rotateY(-30deg);
+}
+[class^="rect"] {
+    position: absolute;
+}
+
+.rect__front,
+.rect__back{
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+    background: rgb(0, 0, 0);
+}
+.rect__front {
+    background-image: url('./circuit-res.png');
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.rect__right,
+.rect__left{
+    width: 100px;
+    height: 200px;
+    left: 100px;
+    background: black;
+}
+.rect__bottom,
+.rect__top{
+    width: 300px;
+    height: 100px;
+    background: black;
+    top: 50px;
+}
+.rect__front  { transform: rotateY(  0deg) translateZ( 50px); }
+.rect__back   { transform: rotateY(180deg) translateZ( 50px); }
+.rect__right  { transform: rotateY( 90deg) translateZ(150px); }
+.rect__left   { transform: rotateY(-90deg) translateZ(150px); }
+.rect__top    { transform: rotateX( 90deg) translateZ(100px); }
+.rect__bottom { transform: rotateX(-90deg) translateZ(100px); }

@@ -23,33 +23,33 @@ class Stopwatch {
   }
 
   start() {
-      if (!this.running) {
-          this.running = true;
-          this.watch = setInterval(()=> this.step(), 10);
-      }
+    if (!this.running) {
+      this.running = true;
+      this.watch = setInterval(() => this.step(), 10);
+    }
   }
 
   step() {
-      if (!this.running) return;
-      this.calculate();
-      this.print();
+    if (!this.running) return;
+    this.calculate();
+    this.print();
   }
 
   calculate() {
-      this.times.miliseconds += 1;
-      if (this.times.miliseconds >= 100) {
-          this.times.seconds += 1;
-          this.times.miliseconds = 0;
-      }
-      if (this.times.seconds >= 60) {
-          this.times.minutes +=1;
-          this.times.seconds = 0;
-      }
+    this.times.miliseconds += 1;
+    if (this.times.miliseconds >= 100) {
+      this.times.seconds += 1;
+      this.times.miliseconds = 0;
+    }
+    if (this.times.seconds >= 60) {
+      this.times.minutes += 1;
+      this.times.seconds = 0;
+    }
   }
 
   stop() {
-      this.running = false;
-      clearInterval(this.watch);
+    this.running = false;
+    clearInterval(this.watch);
   }
 }
 
@@ -60,6 +60,13 @@ startButton.addEventListener('click', () => stopwatch.start());
 
 const stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', () => stopwatch.stop());
+
+const resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', () => {
+  stopwatch.stop();
+  stopwatch.reset();
+  stopwatch.print();
+});
 
 function pad0(value) {
   let result = value.toString();
