@@ -4,36 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Timer</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Stoptimer</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="rect-container">
-      <div class="rect">
-        <div class="rect__front">
-          <div class="stopwatch-container">
-            <div class="lcd-frame">88:88:88</div>
-            <div class="stopwatch"></div>
-            <ul class="results"></ul>
+    <div class="app-wrapper">
+      <div class="timer-wrapper">
+        <div class="rect-container">
+          <div class="rect">
+            <div class="rect__front">
+              <div class="stopwatch-container">
+                <div class="lcd-frame">88888888</div>
+                <div class="stopwatch"></div>
+                <ul class="results"></ul>
+              </div>
+              <nav class="controls">
+                <a href="#" class="button" id="start">►</a>
+                <a href="#" class="button" id="stop">||</a>
+                <a href="#" class="button" id="reset">CE</a>
+                <a href="#" class="button" id="memory">M+</a>
+                <a href="#" class="button" id="clear-list">CL</a>
+              </nav>
+            </div>
+            <div class="rect__back"></div>
+            <div class="rect__top"></div>
+            <div class="rect__bottom"></div>
+            <div class="rect__left"></div>
+            <div class="rect__right">Kodilla</div>
           </div>
-          <nav class="controls">
-            <a href="#" class="button" id="start">►</a>
-            <a href="#" class="button" id="stop">||</a>
-            <a href="#" class="button" id="reset">CE</a>
-            <a href="#" class="button" id="memory">M+</a>
-            <a href="#" class="button" id="list">L</a>
-          </nav>
         </div>
-        <div class="rect__back">back</div>
-        <div class="rect__top">top</div>
-        <div class="rect__bottom">bottom</div>
-        <div class="rect__left">left</div>
-        <div class="rect__right">right</div>
+      </div>
+      <div class="memory-times">
+        <h2>Times</h2>
+        <ul>
+          <li>02:02:02</li>
+          <li>02:02:02</li>
+          <li>02:02:02</li>
+          <li>02:02:02</li>
+          <li>02:02:02</li>
+          <li>02:02:02</li>
+          <li>02:02:02</li>
+          <li>02:02:02</li>
+          <li>02:02:02</li>
+          <li>02:02:02</li>
+        </ul>
       </div>
     </div>
 
-    <!-- <script type="text/javascript" src="script-compiled.js"></script> -->
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script-compiled.js"></script>
   </body>
 </html>

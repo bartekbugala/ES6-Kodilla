@@ -6,9 +6,86 @@
   box-sizing: border-box;
   margin: 0;
 }
+.app-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.timer-wrapper {
+  flex: 0 0 320px;
+  position: relative;
+  min-height: 200px;
+}
+.rect-container {
+  margin-left: auto;
+  margin-right: auto;
+  perspective: 500px;
+}
+.rect {
+  width: 200px;
+  height: 280px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateY(35px) translateZ(-50px) rotateY(-40deg);
+}
+[class^='rect__'] {
+  position: absolute;
+}
+
+.rect__front,
+.rect__back {
+  padding: 20px;
+  width: 300px;
+  height: 200px;
+  background: rgb(0, 0, 0);
+}
+.rect__front {
+  background-image: url('./circuit-res.png');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.rect__right,
+.rect__left {
+  width: 100px;
+  height: 200px;
+  left: 100px;
+  background: black;
+}
+.rect__right {
+  color: white;
+  text-align: center;
+}
+.rect__bottom,
+.rect__top {
+  width: 300px;
+  height: 100px;
+  background: black;
+  top: 50px;
+}
+.rect__front {
+  transform: rotateY(0deg) translateZ(50px);
+}
+.rect__back {
+  transform: rotateY(180deg) translateZ(50px);
+}
+.rect__right {
+  transform: rotateY(90deg) translateZ(150px);
+}
+.rect__left {
+  transform: rotateY(-90deg) translateZ(150px);
+}
+.rect__top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+.rect__bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
 .stopwatch-container {
   position: relative;
-  margin: 0 auto;
   display: block;
   width: 200px;
   font-size: 30px;
@@ -18,8 +95,6 @@
   background-color: rgba(0, 0, 0, 0.9);
   border-radius: 6px;
   perspective: 400px;
-  transform: translate3d(0, 0, 200px);
-  z-index: 9999;
   box-shadow: 2px 2px 5px black;
 }
 .stopwatch {
@@ -30,11 +105,9 @@
   color: rgb(255, 45, 45);
   opacity: 0.9;
   text-align: center;
-  
   font-family: Segment7Standard;
   text-shadow: 0 0 5px rgb(255, 137, 137);
   padding: 10px;
-  
 }
 .lcd-frame {
   position: absolute;
@@ -48,75 +121,38 @@
   padding: 10px;
 }
 .controls {
-    margin-top: 10px;
+  margin-top: 10px;
   text-align: center;
 }
 .button {
-    display: block;
-    float: left;
-    text-decoration: none;
-    background: black;
-    padding: 4px;
-    margin: 4px;
-    width: 30px;
-    height: 30px;
-    color: white;
-    box-shadow: 2px 2px 5px black;
+  display: block;
+  float: left;
+  text-decoration: none;
+  background: black;
+  padding: 4px;
+  margin: 4px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  box-shadow: 2px 2px 5px black;
 }
 .button:hover {
-    background-color: rgb(44, 44, 44);
-    color: white;
+  background-color: rgb(44, 44, 44);
+  color: white;
 }
 .button:active {
-    box-shadow: 1px 1px 2px black;
-}
-.rect-container {
-    width: 300px;
-    height: 200px;
-    perspective: 500px;
-}
-.rect {
-    width: 200px;
-    height: 300px;
-    position: relative;
-    transform-style: preserve-3d;
-    transform: translateX(50%) translateY(10%) translateZ( -50px) rotateY(-30deg);
-}
-[class^="rect"] {
-    position: absolute;
+  box-shadow: 1px 1px 2px black;
 }
 
-.rect__front,
-.rect__back{
-    padding: 20px;
-    width: 300px;
-    height: 200px;
-    background: rgb(0, 0, 0);
+.memory-times {
+    color: #0000a8;
+  display: block;
+  background-color: #ffffe8;
+  flex: 1 1;
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, #86c3d350 1px, transparent 1px),
+    linear-gradient(to bottom, #86c3d350 1px, transparent 1px);
 }
-.rect__front {
-    background-image: url('./circuit-res.png');
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.memory-times ul {
+  list-style: none;
 }
-.rect__right,
-.rect__left{
-    width: 100px;
-    height: 200px;
-    left: 100px;
-    background: black;
-}
-.rect__bottom,
-.rect__top{
-    width: 300px;
-    height: 100px;
-    background: black;
-    top: 50px;
-}
-.rect__front  { transform: rotateY(  0deg) translateZ( 50px); }
-.rect__back   { transform: rotateY(180deg) translateZ( 50px); }
-.rect__right  { transform: rotateY( 90deg) translateZ(150px); }
-.rect__left   { transform: rotateY(-90deg) translateZ(150px); }
-.rect__top    { transform: rotateX( 90deg) translateZ(100px); }
-.rect__bottom { transform: rotateX(-90deg) translateZ(100px); }
