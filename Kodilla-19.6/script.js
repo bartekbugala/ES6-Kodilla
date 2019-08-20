@@ -51,6 +51,10 @@ class Stopwatch {
     this.running = false;
     clearInterval(this.watch);
   }
+
+  memory() {
+    return this.innerText = this.format(this.times);
+  }
 }
 
 const stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
@@ -75,3 +79,19 @@ function pad0(value) {
   }
   return result;
 }
+
+const memoryList = document.querySelector('.memory-times ul');
+
+const memoryButton = document.getElementById('memory');
+memoryButton.addEventListener('click', () => {
+  let liElement = document.createElement('li');
+  liElement.innerText = stopwatch.memory();
+  memoryList.appendChild(liElement);
+});
+
+const clearListButton = document.getElementById('clear-list');
+clearListButton.addEventListener('click', () => {
+  document.querySelectorAll('.memory-times ul li').forEach(element => {
+    element.remove();
+  });
+})

@@ -2,6 +2,7 @@
   font-family: Segment7Standard;
   src: url('Segment7Standard.otf');
 }
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
@@ -145,7 +146,11 @@
 }
 
 .memory-times {
-    color: #0000a8;
+    font-family: 'Shadows Into Light Two', cursive;
+  color: #0000a8;
+  margin: 10px 20px 10px 10px;
+  box-shadow: 4px 4px 10px grey;
+  padding: 10px;
   display: block;
   background-color: #ffffe8;
   flex: 1 1;
@@ -155,4 +160,6 @@
 }
 .memory-times ul {
   list-style: none;
+  font-weight: bold;
+  overflow: auto;
 }

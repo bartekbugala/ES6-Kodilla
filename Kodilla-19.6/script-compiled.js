@@ -71,6 +71,11 @@ var Stopwatch = function () {
       this.running = false;
       clearInterval(this.watch);
     }
+  }, {
+    key: 'memory',
+    value: function memory() {
+      return this.innerText = this.format(this.times);
+    }
   }]);
 
   return Stopwatch;
@@ -102,3 +107,19 @@ function pad0(value) {
   }
   return result;
 }
+
+var memoryList = document.querySelector('.memory-times ul');
+
+var memoryButton = document.getElementById('memory');
+memoryButton.addEventListener('click', function () {
+  var liElement = document.createElement('li');
+  liElement.innerText = stopwatch.memory();
+  memoryList.appendChild(liElement);
+});
+
+var clearListButton = document.getElementById('clear-list');
+clearListButton.addEventListener('click', function () {
+  document.querySelectorAll('.memory-times ul li').forEach(function (element) {
+    element.remove();
+  });
+});
