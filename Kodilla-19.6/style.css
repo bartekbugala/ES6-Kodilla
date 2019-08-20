@@ -162,4 +162,5 @@
   list-style: none;
   font-weight: bold;
   overflow: auto;
+  max-height: 300px;
 }
