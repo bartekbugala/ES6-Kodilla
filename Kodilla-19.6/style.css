@@ -1,8 +1,8 @@
 @font-face {
   font-family: Segment7Standard;
-  src: url('Segment7Standard.otf');
+  src: url("Segment7Standard.otf");
 }
-@import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Rock+Salt&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,6 +17,12 @@
   flex: 0 0 320px;
   position: relative;
   min-height: 200px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Chrome and Opera */
 }
 .rect-container {
   margin-left: auto;
@@ -30,10 +36,12 @@
   transform-style: preserve-3d;
   transform: translateY(35px) translateZ(-50px) rotateY(-40deg);
 }
-[class^='rect__'] {
+[class^="rect__"] {
   position: absolute;
+  border: solid rgb(94, 93, 93) 1px;
+  background-color: black;
+  color: white;
 }
-
 .rect__front,
 .rect__back {
   padding: 20px;
@@ -42,8 +50,7 @@
   background: rgb(0, 0, 0);
 }
 .rect__front {
-  background-image: url('./circuit-res.png');
-
+  background-image: url("./circuit-res.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -53,17 +60,14 @@
   width: 100px;
   height: 200px;
   left: 100px;
-  background: black;
 }
 .rect__right {
-  color: white;
   text-align: center;
 }
 .rect__bottom,
 .rect__top {
   width: 300px;
   height: 100px;
-  background: black;
   top: 50px;
 }
 .rect__front {
@@ -84,7 +88,6 @@
 .rect__bottom {
   transform: rotateX(-90deg) translateZ(100px);
 }
-
 .stopwatch-container {
   position: relative;
   display: block;
@@ -95,6 +98,7 @@
   background-color: rgba(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.9);
   border-radius: 6px;
+  border: 1px solid rgb(73, 73, 73);
   perspective: 400px;
   box-shadow: 2px 2px 5px black;
 }
@@ -136,7 +140,21 @@
   height: 30px;
   color: white;
   box-shadow: 2px 2px 5px black;
+  border: 1px solid rgb(73, 73, 73);
 }
+.button:nth-of-type(1) {
+  font-size: 18px;
+}
+.button:nth-of-type(2) {
+  font-weight: bold;
+  font-size: 15px;
+}
+.button:nth-of-type(3){
+  font-size: 20px;
+  padding: 0;
+}
+
+
 .button:hover {
   background-color: rgb(44, 44, 44);
   color: white;
@@ -144,19 +162,23 @@
 .button:active {
   box-shadow: 1px 1px 2px black;
 }
-
 .memory-times {
-    font-family: 'Shadows Into Light Two', cursive;
+  font-family: "Shadows Into Light Two", cursive;
   color: #0000a8;
   margin: 10px 20px 10px 10px;
-  box-shadow: 4px 4px 10px grey;
+  
   padding: 10px;
   display: block;
   background-color: #ffffe8;
-  flex: 1 1;
+  flex: 0 0 500px;
   background-size: 20px 20px;
   background-image: linear-gradient(to right, #86c3d350 1px, transparent 1px),
     linear-gradient(to bottom, #86c3d350 1px, transparent 1px);
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4), inset 0 0 50px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 2px 5px 0 10px;
 }
 .memory-times ul {
   list-style: none;
