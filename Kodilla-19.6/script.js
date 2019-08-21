@@ -2,11 +2,11 @@ class Stopwatch {
   constructor(display) {
     this.running = false;
     this.display = display;
-    this.reset();
+    this.toZero();
     this.print(this.times);
   }
 
-  reset() {
+  toZero() {
     this.times = {
       minutes: 0,
       seconds: 0,
@@ -35,6 +35,12 @@ class Stopwatch {
     this.print();
   }
 
+  reset() {
+    this.stop();
+    this.toZero();
+    this.print();
+  }
+
   calculate() {
     this.times.miliseconds += 1;
     if (this.times.miliseconds >= 100) {
@@ -53,7 +59,7 @@ class Stopwatch {
   }
 
   memory() {
-    return this.innerText = this.format(this.times);
+    this.format(this.times);
   }
 }
 
@@ -66,11 +72,7 @@ const stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', () => stopwatch.stop());
 
 const resetButton = document.getElementById('reset');
-resetButton.addEventListener('click', () => {
-  stopwatch.stop();
-  stopwatch.reset();
-  stopwatch.print();
-});
+resetButton.addEventListener('click', () => stopwatch.reset());
 
 function pad0(value) {
   let result = value.toString();
@@ -83,15 +85,14 @@ function pad0(value) {
 const memoryList = document.querySelector('.memory-times ul');
 
 const memoryButton = document.getElementById('memory');
-memoryButton.addEventListener('click', () => {
-  let liElement = document.createElement('li');
-  liElement.innerText = stopwatch.memory();
+memoryButton.addEventListener('click', () => { 
+  document.createElement('li').innerText = stopwatch.memory();
   memoryList.appendChild(liElement);
 });
 
 const clearListButton = document.getElementById('clear-list');
 clearListButton.addEventListener('click', () => {
-  document.querySelectorAll('.memory-times ul li').forEach(element => {
+  memoryButton.querySelectorAll('li').forEach(element => {
     element.remove();
   });
 })
