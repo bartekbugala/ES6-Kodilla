@@ -85,8 +85,9 @@ function pad0(value) {
 const memoryList = document.querySelector('.memory-times ul');
 
 const memoryButton = document.getElementById('memory');
-memoryButton.addEventListener('click', () => { 
-  document.createElement('li').innerText = stopwatch.memory();
+memoryButton.addEventListener('click', () => {
+  let liElement = document.createElement('li')
+  liElement.innerText = stopwatch.memory();
   memoryList.appendChild(liElement);
 });
 
