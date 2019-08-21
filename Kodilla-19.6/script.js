@@ -100,5 +100,6 @@ clearListButton.addEventListener('click', () => {
 
 const onOffButton = document.getElementById('on-off');
 onOffButton.addEventListener('click', () => {
+  stopwatch.reset();
   document.querySelector('.stopwatch').classList.toggle('power-off');
 });
