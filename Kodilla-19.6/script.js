@@ -63,10 +63,14 @@ class Stopwatch {
   }
 }
 
-const stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
+const stopwatchElem = document.querySelector('.stopwatch');
+
+const stopwatch = new Stopwatch(stopwatchElem);
+
+function startClickHandler() { stopwatch.start(); }
 
 const startButton = document.getElementById('start');
-startButton.addEventListener('click', () => stopwatch.start());
+startButton.addEventListener('click', startClickHandler);
 
 const stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', () => stopwatch.stop());
@@ -86,9 +90,12 @@ const memoryList = document.querySelector('.memory-times ul');
 
 const memoryButton = document.getElementById('memory');
 memoryButton.addEventListener('click', () => {
-  let liElement = document.createElement('li')
-  liElement.innerText = stopwatch.memory();
-  memoryList.appendChild(liElement);
+  if (!stopwatchElem.classList.contains('power-off')){
+    let liElement = document.createElement('li')
+    liElement.innerText = stopwatch.memory();
+    memoryList.appendChild(liElement);
+  }
+  return;
 });
 
 const clearListButton = document.getElementById('clear-list');
@@ -100,6 +107,13 @@ clearListButton.addEventListener('click', () => {
 
 const onOffButton = document.getElementById('on-off');
 onOffButton.addEventListener('click', () => {
-  stopwatch.reset();
-  document.querySelector('.stopwatch').classList.toggle('power-off');
+  if (!stopwatchElem.classList.contains('power-off')) {
+    stopwatchElem.classList.toggle('power-off');
+    stopwatch.reset();  
+    startButton.removeEventListener('click', startClickHandler)
+  }
+  else {
+    stopwatchElem.classList.toggle('power-off');
+    startButton.addEventListener('click', startClickHandler)
+  }
 });

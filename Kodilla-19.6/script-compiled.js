@@ -88,12 +88,16 @@ var Stopwatch = function () {
   return Stopwatch;
 }();
 
-var stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
+var stopwatchElem = document.querySelector('.stopwatch');
+
+var stopwatch = new Stopwatch(stopwatchElem);
+
+function startClickHandler() {
+  stopwatch.start();
+}
 
 var startButton = document.getElementById('start');
-startButton.addEventListener('click', function () {
-  return stopwatch.start();
-});
+startButton.addEventListener('click', startClickHandler);
 
 var stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', function () {
@@ -117,9 +121,12 @@ var memoryList = document.querySelector('.memory-times ul');
 
 var memoryButton = document.getElementById('memory');
 memoryButton.addEventListener('click', function () {
-  var liElement = document.createElement('li');
-  liElement.innerText = stopwatch.memory();
-  memoryList.appendChild(liElement);
+  if (!stopwatchElem.classList.contains('power-off')) {
+    var liElement = document.createElement('li');
+    liElement.innerText = stopwatch.memory();
+    memoryList.appendChild(liElement);
+  }
+  return;
 });
 
 var clearListButton = document.getElementById('clear-list');
@@ -131,6 +138,12 @@ clearListButton.addEventListener('click', function () {
 
 var onOffButton = document.getElementById('on-off');
 onOffButton.addEventListener('click', function () {
-  stopwatch.reset();
-  document.querySelector('.stopwatch').classList.toggle('power-off');
+  if (!stopwatchElem.classList.contains('power-off')) {
+    stopwatchElem.classList.toggle('power-off');
+    stopwatch.reset();
+    startButton.removeEventListener('click', startClickHandler);
+  } else {
+    stopwatchElem.classList.toggle('power-off');
+    startButton.addEventListener('click', startClickHandler);
+  }
 });
