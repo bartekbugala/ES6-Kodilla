@@ -93,7 +93,7 @@ memoryButton.addEventListener('click', () => {
 
 const clearListButton = document.getElementById('clear-list');
 clearListButton.addEventListener('click', () => {
-  memoryButton.querySelectorAll('li').forEach(element => {
+  memoryList.querySelectorAll('li').forEach(element => {
     element.remove();
   });
-})
+});
