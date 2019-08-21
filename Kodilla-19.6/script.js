@@ -59,7 +59,7 @@ class Stopwatch {
   }
 
   memory() {
-    this.format(this.times);
+    return this.format(this.times);
   }
 }
 
@@ -96,4 +96,9 @@ clearListButton.addEventListener('click', () => {
   memoryList.querySelectorAll('li').forEach(element => {
     element.remove();
   });
+});
+
+const onOffButton = document.getElementById('on-off');
+onOffButton.addEventListener('click', () => {
+  document.querySelector('.stopwatch').classList.toggle('power-off');
 });

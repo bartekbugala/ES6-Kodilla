@@ -114,6 +114,9 @@
   text-shadow: 0 0 5px rgb(255, 137, 137);
   padding: 10px;
 }
+.power-off {
+  opacity: 0;
+}
 .lcd-frame {
   position: absolute;
   display: block;
@@ -157,6 +160,17 @@
   background-color: rgb(44, 44, 44);
   color: white;
 }
+.button:nth-of-type(6){
+  background-color: darkred;
+  font-size: 20px;
+  padding: 0;
+}
+.button:nth-of-type(6):hover{
+  background-color: rgb(172, 61, 61);
+  font-size: 20px;
+  padding: 0;
+}
+
 .button:active {
   box-shadow: 1px 1px 2px black;
 }

@@ -10,13 +10,13 @@ var Stopwatch = function () {
 
     this.running = false;
     this.display = display;
-    this.reset();
+    this.toZero();
     this.print(this.times);
   }
 
   _createClass(Stopwatch, [{
-    key: 'reset',
-    value: function reset() {
+    key: 'toZero',
+    value: function toZero() {
       this.times = {
         minutes: 0,
         seconds: 0,
@@ -53,6 +53,13 @@ var Stopwatch = function () {
       this.print();
     }
   }, {
+    key: 'reset',
+    value: function reset() {
+      this.stop();
+      this.toZero();
+      this.print();
+    }
+  }, {
     key: 'calculate',
     value: function calculate() {
       this.times.miliseconds += 1;
@@ -74,7 +81,7 @@ var Stopwatch = function () {
   }, {
     key: 'memory',
     value: function memory() {
-      return this.innerText = this.format(this.times);
+      return this.format(this.times);
     }
   }]);
 
@@ -95,9 +102,7 @@ stopButton.addEventListener('click', function () {
 
 var resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', function () {
-  stopwatch.stop();
-  stopwatch.reset();
-  stopwatch.print();
+  return stopwatch.reset();
 });
 
 function pad0(value) {
@@ -119,7 +124,12 @@ memoryButton.addEventListener('click', function () {
 
 var clearListButton = document.getElementById('clear-list');
 clearListButton.addEventListener('click', function () {
-  document.querySelectorAll('.memory-times ul li').forEach(function (element) {
+  memoryList.querySelectorAll('li').forEach(function (element) {
     element.remove();
   });
+});
+
+var onOffButton = document.getElementById('on-off');
+onOffButton.addEventListener('click', function () {
+  document.querySelector('.stopwatch').classList.toggle('power-off');
 });
