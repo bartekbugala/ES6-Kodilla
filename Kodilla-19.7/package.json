@@ -19,7 +19,7 @@
     "watch:sassprefixer": "onchange -d 100 sass/*.scss sass/**/*.scss -- npm-run-all watch:sass watch:autoprefixer",
     "watch:sass": "node-sass --output-style expanded --source-map true -o css sass",
     "watch:autoprefixer": "autoprefixer-cli css/style.css",
-    "watch:babel": "babel ./script.js --watch --out-file script-compiled.js",
+  
     "watch:validate": "onchange *.html -- npm-run-all test:all",
     "watch:browsersync": "browser-sync start --server --files js css *.html"
   },
@@ -34,9 +34,6 @@
   "devDependencies": {
     "allhtml-validator-cli": "git+https://github.com/bartekbugala/allhtml-validator-cli",
     "autoprefixer-cli": "^1.0.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-latest": "^6.24.1",
     "browser-sync": "^2.26.5",
     "globstar": "^1.0.0",
     "mkdirp": "^0.5.1",
