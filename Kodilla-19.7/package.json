@@ -4,14 +4,7 @@
   "description": "react remake of stoptimer",
   "main": "index.html",
   "scripts": {
-    "cook-all": "npm-run-all cook:*",
-    "cook:index": "curl https://raw.githubusercontent.com/bartekbugala/my-webtemplates/master/index.html -o index.html",
-    "cook:scss": "curl https://raw.githubusercontent.com/bartekbugala/my-webtemplates/master/style.scss -o sass/style.scss",
     "cook:mustache": "curl https://raw.githubusercontent.com/janl/mustache.js/master/mustache.js -o vendor/mustache.js",
-    "cook:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
-    "cook:normalize": "curl https://necolas.github.io/normalize.css/latest/normalize.css -o vendor/normalize.css",
-    "cook:git": "git init && git add . && git commit -m \"Initial commit\" && git status",
-    
     "test": "npm-run-all test:*",
     "test:all": "html-validator --allfiles --verbose",
     "init-project": "npm install && npm-run-all init:*",
