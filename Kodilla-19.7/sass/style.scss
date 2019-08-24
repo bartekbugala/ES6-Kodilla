@@ -1,67 +1,24 @@
-//@import "layout";
-//@import "mixins";
-//@import "variables";
-//@import "media-queries";
-//@import "partials";
-
-// CHEATSHEET
-//
-//@import "normalize"; -> _normalize.scss
-//
-// Flex grid mixin
-// ===================
-//@mixin grid($prefix) {
-//    @for $i from 1 through 12 {
-//      .col-#{$prefix}-#{$i} {
-//        $width: 100% / 12 * $i;
-//        flex: 0 0 $width;
-//        max-width: $width;
-//      }
-//    }
-//  }
-//
-// ===================
-//
-//@include grid('xs');
-//@include grid('sm');
-//@include grid('md');
-//@include grid('lg');
-//@include grid('xl');
-//
-// ===================
-// Default flex grid
-//@for $i from 1 through 12 {
-//    .col-#{$i} {
-//      $width: 100% / 12 * $i;
-//      flex: 0 0 $width;
-//      max-width: $width;
-//    }
-//  }
-//
-// ===================
-// Variables
-// $body-background-color: #f5f5f2;
-//
-// ===================
-// Classic Flex for Sass
-//.row {
-//    width: 100%;
-//    &::before,
-//    &::after {
-//      content: "";
-//      display: table;
-//      clear: both;
-//    }
-//  
-//    [class*="col-"] {
-//      float: left;
-//    }
-//  
-//    @for $i from 1 through 12 {
-//      .col-#{$i},
-//      .col-offset-#{$i} {
-//        $width: 100% / 12 * $i;
-//        width: $width;
-//      }
-//    }
-//  }
+#timer {
+  padding: 20px;
+  width: 120px;
+  font-size: 40px;
+}
+.button {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  background-color: green;
+  margin: 0 10px;
+  font-size: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  transition: background-color linear 0.3s, color linear 0.3s;
+  &:hover {
+    color: black;
+    background-color: lightgreen;
+  }
+}

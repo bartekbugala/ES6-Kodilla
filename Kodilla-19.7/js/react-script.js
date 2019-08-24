@@ -9,18 +9,9 @@ class Stopwatch extends React.Component {
             miliseconds: 0
           }
         }
-        this.empty = this.empty.bind(this);
         this.start = this.start.bind(this);
         this.stop = this.stop.bind(this);
-        this.updateTime = this.updateTime.bind(this);
-        this.memory = this.memory.bind(this);
         this.reset = this.reset.bind(this);
-        this.printTime = this.printTime.bind(this);
-        this.toZero = this.toZero.bind(this)
-      }
-
-      empty() {
-        console.log('empty')
       }
 
      printTime() {
@@ -47,7 +38,6 @@ class Stopwatch extends React.Component {
       }
 
       toZero() {
-        console.log('toZero')
         this.state.currentTime = {
             minutes: 0,
             seconds: 0,
@@ -62,32 +52,27 @@ class Stopwatch extends React.Component {
       }
     
       calculate() {
-        this.state.currentTime.miliseconds += 1;
-        if (this.state.currentTime.miliseconds >= 100) {
-          this.state.currentTime.seconds += 1;
-          this.state.currentTime.miliseconds = 0;
+        const tempTime = this.state.currentTime;
+        tempTime.miliseconds++;
+        if (tempTime.miliseconds >= 100) {
+          tempTime.seconds++;
+          tempTime.miliseconds = 0;
         }
-        if (this.state.currentTime.seconds >= 60) {
-          this.state.currentTime.minutes += 1;
-          this.state.currentTime.seconds = 0;
+        if (tempTime.seconds >= 60) {
+          tempTime.minutes ++;
+          tempTime.seconds = 0;
         }
+        this.setState({currentTime: tempTime})
       }
     
-      memory() {
-        return format(this.state.currentTime);
-      }
-
 
       render() {
         return <div className='stopwatch'>
-          <div id={'timer'}>00:00:00</div>
+          <div id={'timer'}>{format(this.state.currentTime)}</div>
           <nav className={'controls'}>
-            <a href={'#'} className={'button'} onClick={this.start}id={'start'}>►</a>
-            <a href={'#'} className={'button'} onClick={this.stop}id={'stop'}>| |</a>
-            <a href={'#'} className={'button'} onClick={this.reset}id={'reset'}>■</a>
-            <a href={'#'} className={'button'} onClick={this.memory}id={'memory'}>M+</a>
-            <a href={'#'} className={'button'} onClick={this.empty}id={'clear-list'}>CL</a>
-            <a href={'#'} className={'button'} onClick={this.empty}id={'on-off'}>◙</a>
+            <a href={'#'} className={'button'} onClick={this.start} id={'start'}>►</a>
+            <a href={'#'} className={'button'} onClick={this.stop} id={'stop'}>| |</a>
+            <a href={'#'} className={'button'} onClick={this.reset} id={'reset'}>■</a>
         </nav>      
         </div>
     }
@@ -103,27 +88,6 @@ function pad0(value) {
 function format(time) {
   return `${pad0(time.minutes)}:${pad0(time.seconds)}:${pad0(Math.floor(time.miliseconds))}`;
 }
-
-/*
-const clearListButton = document.getElementById('clear-list');
-clearListButton.addEventListener('click', () => {
-  memoryList.querySelectorAll('li').forEach(element => {
-    element.remove();
-  });
-});
-
-const onOffButton = document.getElementById('on-off');
-onOffButton.addEventListener('click', () => {
-  if (!stopwatchElem.classList.contains('power-off')) {
-    stopwatchElem.classList.toggle('power-off');
-    stopwatch.reset();  
-    startButton.removeEventListener('click', startClickHandler)
-  }
-  else {
-    stopwatchElem.classList.toggle('power-off');
-    startButton.addEventListener('click', startClickHandler)
-  }
-});*/
 
 const stopwatch = <Stopwatch />
 ReactDOM.render(stopwatch, document.getElementById('app'));
