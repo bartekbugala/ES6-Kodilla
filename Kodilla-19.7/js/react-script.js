@@ -13,12 +13,7 @@ class Stopwatch extends React.Component {
         this.stop = this.stop.bind(this);
         this.reset = this.reset.bind(this);
       }
-
-     printTime() {
-        document.getElementById('timer').innerText = format(this.state.currentTime);
-      }
-
-      
+     
       start() {
         if (!this.state.running) {
           this.state.running = true;
@@ -34,7 +29,6 @@ class Stopwatch extends React.Component {
       updateTime() {    
         if (!this.state.running) return;
         this.calculate();
-        this.printTime();
       }
 
       toZero() {
@@ -48,7 +42,12 @@ class Stopwatch extends React.Component {
       reset() {
         this.stop();
         this.toZero();
-        this.printTime()
+        this.setState({currentTime: {
+          minutes: 0,
+          seconds: 0,
+          miliseconds: 0
+        }})
+
       }
     
       calculate() {
