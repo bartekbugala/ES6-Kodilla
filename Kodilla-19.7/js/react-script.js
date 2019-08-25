@@ -1,6 +1,17 @@
 class Stopwatch extends React.Component {
   constructor() {
     super();
+  }
+  render() {
+    return <div>
+      <Display />
+    </div>
+  }
+}
+
+class Display extends React.Component {
+  constructor() {
+    super();
     this.state = {
       running: false,
       currentTime: {
@@ -74,6 +85,7 @@ class Stopwatch extends React.Component {
     </div>
   }
 }
+
 class Controls extends React.Component {
   constructor(props) {
     super(props);
