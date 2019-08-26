@@ -1,17 +1,6 @@
 class Stopwatch extends React.Component {
   constructor() {
     super();
-  }
-  render() {
-    return <div>
-      <Display />
-    </div>
-  }
-}
-
-class Display extends React.Component {
-  constructor() {
-    super();
     this.state = {
       running: false,
       currentTime: {
@@ -80,12 +69,23 @@ class Display extends React.Component {
 
   render() {
     return <div className='stopwatch'>
-      <div id={'timer'}>{format(this.state.currentTime)}</div>
+      <Display currentTime={this.state.currentTime}/>
       <Controls onStart={this.start} onStop={this.stop} onReset={this.reset} />
     </div>
   }
 }
 
+class Display extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div id={'timer'}>{format(this.props.currentTime)}</div>;
+  }
+}
+
+
+// Przyciski
 class Controls extends React.Component {
   constructor(props) {
     super(props);
@@ -126,6 +126,7 @@ class ResetBtn extends React.Component {
   }
 }
 
+// funkcje - utils
 function pad0(value) {
   let result = value.toString();
   if (result.length < 2) {
@@ -137,5 +138,6 @@ function format(time) {
   return `${pad0(time.minutes)}:${pad0(time.seconds)}:${pad0(Math.floor(time.miliseconds))}`;
 }
 
+// Render
 const stopwatch = <Stopwatch />
 ReactDOM.render(stopwatch, document.getElementById('app'));
