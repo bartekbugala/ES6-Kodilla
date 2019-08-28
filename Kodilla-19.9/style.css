@@ -1,0 +1,18 @@
+body {
+    background-color: lightblue;
+}
+div {
+  background-color: red;
+}
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.user-list__user {
+  display: flex;
+  flex-wrap: wrap;
+}
+.user-list__user a {
+  text-decoration: none;
+  text-align: center;
+}
