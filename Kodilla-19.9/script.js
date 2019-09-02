@@ -1,7 +1,3 @@
-const formStyle = {
-  padding: '10px'
-};
-
 class GithubSearch extends React.Component {
   constructor() {
     super();
@@ -26,7 +22,7 @@ class GithubSearch extends React.Component {
 
   render() {
     return (
-      <div style={formStyle}>
+      <div className='formContainer'>
         <form onSubmit={event => this.onSubmit(event)}>
           <label htmlFor="searchText">Search by user name</label>
           <input

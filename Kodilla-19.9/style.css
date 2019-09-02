@@ -4,6 +4,9 @@ body {
 div {
 background-color: lightgrey;
 }
+.formContainer {
+  padding: 10px;
+}
 .user-list {
 display: flex;
 flex-wrap: wrap;
