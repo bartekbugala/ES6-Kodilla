@@ -1,18 +1,25 @@
 body {
-    background-color: lightblue;
+  background-color: lightblue;
 }
 div {
-  background-color: red;
+background-color: lightgrey;
+}
+.formContainer {
+  padding: 10px;
 }
 .user-list {
-  display: flex;
-  flex-wrap: wrap;
+display: flex;
+flex-wrap: wrap;
 }
 .user-list__user {
-  display: flex;
-  flex-wrap: wrap;
+display: flex;
+flex-direction: column;
+padding: 5px;
+border: solid 2px blue;
+border-radius: 5px;
+margin: 5px;
 }
 .user-list__user a {
-  text-decoration: none;
-  text-align: center;
+text-decoration: none;
+text-align: center;
 }

@@ -1,33 +1,3 @@
-const myStyle = 
-`body {
-  background-color: lightblue;
-}
-div {
-background-color: lightgrey;
-}
-.user-list {
-display: flex;
-flex-wrap: wrap;
-}
-.user-list__user {
-display: flex;
-flex-direction: column;
-padding: 5px;
-border: solid 2px blue;
-border-radius: 5px;
-margin: 5px;
-}
-.user-list__user a {
-text-decoration: none;
-text-align: center;
-}
-
-`;
-
-const formStyle = {
-  padding: '10px'
-};
-
 class GithubSearch extends React.Component {
   constructor() {
     super();
@@ -52,7 +22,7 @@ class GithubSearch extends React.Component {
 
   render() {
     return (
-      <div style={formStyle}>
+      <div className='formContainer'>
         <form onSubmit={event => this.onSubmit(event)}>
           <label htmlFor="searchText">Search by user name</label>
           <input
@@ -95,7 +65,6 @@ class User extends React.Component {
 class App extends React.Component {
   render() {
     return <div>
-      <style>{myStyle}</style>
       <GithubSearch />
     </div>
 
